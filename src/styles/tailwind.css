@@ -1,0 +1,22 @@
+/* ===============================
+   Premium Liquidity Heatmap Pulse
+   =============================== */
+
+@keyframes liquidityPulse {
+  0% {
+    transform: scale(1);
+    filter: brightness(0.9);
+  }
+  50% {
+    transform: scale(1.08);
+    filter: brightness(1.25);
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(0.9);
+  }
+}
+
+.heatmap-pulse {
+  animation: liquidityPulse 2.4s ease-in-out infinite;
+}

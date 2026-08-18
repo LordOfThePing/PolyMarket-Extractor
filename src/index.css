@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================
+GLOBAL
+========================================================= */
+html, body {
+  height: 100%;
+}
+
+body {
+  @apply bg-black text-white antialiased;
+}
+
+/* =========================================================
+PREMIUM BACKGROUND
+========================================================= */
+.bg-premium {
+  background:
+    radial-gradient(1200px 600px at 50% -10%, rgba(168,85,247,.14), transparent 60%),
+    linear-gradient(to bottom, #06070f, #05050b);
+}
+
+/* =========================================================
+SCROLL
+========================================================= */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* =========================================================
+SIGNAL GLOW + URGENCY
+========================================================= */
+@keyframes pulseFire {
+  0% {
+    box-shadow: 0 0 6px rgba(255,80,80,.4);
+    text-shadow: 0 0 6px rgba(255,80,80,.4);
+  }
+  50% {
+    box-shadow: 0 0 18px rgba(255,80,80,.9);
+    text-shadow: 0 0 14px rgba(255,80,80,.9);
+  }
+  100% {
+    box-shadow: 0 0 6px rgba(255,80,80,.4);
+    text-shadow: 0 0 6px rgba(255,80,80,.4);
+  }
+}
+
+.fire {
+  animation: pulseFire 1.6s ease-in-out infinite;
+  color: #ff5a5a;
+}
+
+/* =========================================================
+CONFIDENCE DECAY (VISUAL ONLY)
+========================================================= */
+@keyframes decay {
+  from { opacity: 1; }
+  to { opacity: .65; }
+}
+
+.decay {
+  animation: decay 60s linear infinite;
+}
+
+/* =========================================================
+CARD
+========================================================= */
+.card {
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,.06),
+    rgba(255,255,255,.02)
+  );
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 14px;
+}
+
+/* =========================================================
+URGENT CARD BORDER (LAST MINUTES)
+========================================================= */
+@keyframes borderDanger {
+  0% { box-shadow: 0 0 0 rgba(255,80,80,.0); }
+  50% { box-shadow: 0 0 22px rgba(255,80,80,.35); }
+  100% { box-shadow: 0 0 0 rgba(255,80,80,.0); }
+}
+
+.resolve-border {
+  animation: borderDanger 2.2s ease-in-out infinite;
+  border-color: rgba(255,80,80,.35);
+}
