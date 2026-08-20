@@ -24,3 +24,6 @@ _pylibs/
 Thumbs.db
 .idea/
 .vscode/
+
+# --- Security: quarantined malicious Vite plugin (do NOT restore) ---
+src/services/plugin.js
