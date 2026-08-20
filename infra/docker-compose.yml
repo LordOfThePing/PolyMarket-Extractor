@@ -1,0 +1,37 @@
+services:
+  db:
+    image: timescale/timescaledb:latest-pg16
+    container_name: pmdb
+    environment:
+      POSTGRES_USER: pm
+      POSTGRES_PASSWORD: pm
+      POSTGRES_DB: polymarket
+    ports:
+      - "5432:5432"
+    volumes:
+      - pmdb_data:/var/lib/postgresql/data
+      # apply the 3-schema DDL on first boot
+      - ../db/migrations:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pm -d polymarket"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      context: ../backend
+    container_name: pmapi
+    environment:
+      DATABASE_URL: postgresql://pm:pm@db:5432/polymarket
+      INGESTOR_MODE: live
+      POLYGON_GAMMA_BASE: https://gamma-api.polymarket.com
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+
+volumes:
+  pmdb_data:

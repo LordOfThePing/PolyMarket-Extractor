@@ -1,1 +1,25 @@
+# --- Node (frontend) ---
 node_modules/
+dist/
+.pnp
+.pnp.js
+
+# --- Python (backend) ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+backend/.venv/
+backend/data/
+_pylibs/
+.tmp/
+*.db
+
+# --- Env ---
+.env
+
+# --- OS / editor ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

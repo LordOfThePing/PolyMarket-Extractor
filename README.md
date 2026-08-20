@@ -249,5 +249,20 @@ GitHub: https://github.com/mailcrypto23/polymarket-daily-dashboard
 *This project prioritizes transparency, analytical integrity, and responsible market tooling.*
 
 
+## 🛠 Backend / Data Pipeline (NEW)
+
+The repository is being productized into a **Python 3.10+ / FastAPI / asyncio**
+ingestion + analytics service with **TimescaleDB**, built around a hard
+**Live | Mock | Resolved** 3-schema separation. Frontend (this dashboard)
+consumes the analytics engine.
+
+- **Backend:** `backend/` — FastAPI app + ingestors (Gamma, CLOB REST+WS, Mock,
+  Resolved) + analytics engine
+- **DB schema:** `db/migrations/001_create_schemas.sql` (TimescaleDB) and
+  `db/demo_sqlite.sql` (identical-shape SQLite for the no-Docker demo)
+- **Infra:** `infra/docker-compose.yml` — TimescaleDB + backend (monitoring-ready)
+- **Quick demo:** `cd backend && python -m scripts.demo`
+  (see `docs/architecture.md`, `docs/db-schema-draft.md`, `docs/DEMO.md`)
+
 ## 🗂 Project Structure (Active)
 
