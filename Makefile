@@ -12,6 +12,8 @@ PIP    := $(VENV)/bin/pip
 PIPWIN := $(VENV)\Scripts\pip
 PYVER  := python -c "import sys; print('%d.%d' % sys.version_info[:2])"
 
+API_HOST ?= 127.0.0.1
+API_PORT ?= 8080
 .PHONY: help setup venv requirements demo api tests lint         db-up db-down db-reset db-logs         up down logs ps         clean compile
 
 # ---------------------------------------------------------------------
@@ -22,7 +24,7 @@ help:
 	@echo "  setup          create venv + install backend deps"
 	@echo "  requirements   install backend requirements into active (or venv) Python"
 	@echo "  demo           run the end-to-end ingestion pipeline demo (SQLite)"
-	@echo "  api            start FastAPI dev server on :8000"
+	@echo "  api            start FastAPI dev server on :8080 (env API_PORT)"
 	@echo "  tests          run backend tests (pytest if available)"
 	@echo "  compile        syntax-check all backend python files"
 	@echo "  lint           run a basic import sanity check"
@@ -66,8 +68,8 @@ demo:
 	cd backend && python -m scripts.demo
 
 api:
-	@echo "== Starting FastAPI at http://127.0.0.1:8000 =="
-	cd backend && uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
+	@echo "== Starting FastAPI at http://127.0.0.1:$(API_PORT) =="
+	cd backend && uvicorn app.main:app --reload --host $(API_HOST) --port $(API_PORT)
 
 compile:
 	cd backend && python -m py_compile \

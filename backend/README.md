@@ -14,7 +14,7 @@ python -m scripts.demo          # run the ingestion pipeline demo
 ## Run the FastAPI server
 
 ```bash
-uvicorn app.main:app --reload --port 8000
+uvicorn app.main:app --reload --port ${API_PORT:-8080}
 # health:  GET /health
 # ingest:  POST /api/ingest/live | /api/ingest/mock | /api/ingest/resolved
 # analytics: GET /api/analytics/categories

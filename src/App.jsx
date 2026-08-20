@@ -8,6 +8,7 @@ import Market from "./pages/Market";
 import OrderbookPage from "./pages/OrderbookPage";
 import Portfolio from "./pages/Portfolio";
 import Settings from "./pages/Settings";
+import AnalyticsDashboard from "./components/AnalyticsDashboard";
 
 // 🔁 Engine background runner (price-driven)
 import { startBackgroundRunner } from "./services/backgroundRunner";
@@ -57,6 +58,14 @@ export default function App() {
           element={
             <Layout>
               <Settings />
+            </Layout>
+          }
+        />
+        <Route
+          path="/analytics"
+          element={
+            <Layout>
+              <AnalyticsDashboard />
             </Layout>
           }
         />

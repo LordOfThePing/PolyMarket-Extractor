@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import LastWinningBet from "./cards/LastWinningBet";
 import SidebarMarketCards from "./SidebarMarketCards";
 
@@ -23,6 +24,22 @@ export default function Sidebar() {
 
       {/* 🔥 WINNING CLAIM — MOVED TO TOP */}
       <LastWinningBet />
+
+      {/* LIVE | MOCK | RESOLVED ANALYTICS */}
+      <nav className="space-y-1">
+        <Link
+          to="/analytics"
+          className="flex items-center justify-between px-3 py-2 rounded-lg
+                     text-sm cursor-pointer text-white hover:bg-white/10
+                     border border-emerald-500/30 bg-emerald-500/10"
+        >
+          <span className="flex items-center gap-2">
+            <span>📊</span>
+            <span>Live · Mock · Resolved</span>
+          </span>
+          <span className="text-[11px] text-emerald-300/70">API</span>
+        </Link>
+      </nav>
 
       {/* CATEGORIES */}
       <nav className="space-y-1">

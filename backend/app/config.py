@@ -27,6 +27,10 @@ class Settings:
         default_factory=lambda: os.getenv(
             "CLOB_WS", "wss://ws-subscriptions-clob.polymarket.com/ws/market"))
 
+    # Server bind
+    api_host: str = field(default_factory=lambda: os.getenv("API_HOST", "127.0.0.1"))
+    api_port: int = field(default_factory=lambda: int(os.getenv("API_PORT", "8080")))
+
     # Ingestion control
     ingestor_mode: str = field(default_factory=lambda: os.getenv("INGESTOR_MODE", "live"))
     live_poll_interval_s: float = field(
